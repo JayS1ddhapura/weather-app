@@ -27,29 +27,29 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Weather',
-        name: 'Flamie'
+        name: 'Jay'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
-        name: 'I'
+        name: 'Jay'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        title: 'HALP PLOX',
-        name: 'bruh',
-        helptext: 'tasuketekudasai'
+        title: 'Help',
+        name: 'Jay',
+        helptext: 'Ask your queries here.'
     })
 })
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
-        title: 'halp 404',
-        name: 'fag',
+        title: '404 not found',
+        name: 'Jay',
         errorMessage: 'help article not found'
     })
 })
@@ -57,7 +57,7 @@ app.get('/help/*', (req, res) => {
 app.get('/weather', (req, res) => {
     if (!req.query.address) {
         return res.send({
-            error: 'gib address REEEEEEEEEEEE'
+            error: 'Please provide valid address.'
         })
     }
 
@@ -86,7 +86,7 @@ app.get('/weather', (req, res) => {
 app.get('/products', (req, res) => {
     if (!req.query.search) {
         return res.send({
-            error: 'gib search term REEEEEEEEEEE'
+            error: 'Please enter a valid location.'
         })
     }
     console.log(req.query.search)
@@ -102,8 +102,6 @@ app.get('*', (req, res) => {
         errorMessage: '404 Page not found'
     })
 })
-
-// app.com/help
 
 app.listen(port, () => {
     console.log('server is up on ' + port)
